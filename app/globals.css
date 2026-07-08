@@ -1,0 +1,383 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+@layer utilities {
+  .shadow-custom {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+}
+
+.heroImage {
+  background-image: url('/Images/Homepage/HeroDesktop.webp');
+}
+
+@media (max-width:640px) {
+  .heroImage {
+    background-image: url('/Images/Homepage/HeroMobile.webp');
+    background-size: 100% 100%;
+  }
+}
+
+
+.glass {
+  /* base “pane” */
+  background: rgba(255, 255, 255, 0.12);
+  /* tweak opacity to taste */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+
+  /* the magic */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  /* Safari */
+
+  /* polish */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* optional: subtle inner highlight like Figma strokes */
+.glass--highlight {
+  position: relative;
+}
+
+.glass--highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, .08));
+  pointer-events: none;
+  mix-blend-mode: screen;
+  /* gentle sheen */
+}
+
+/* fallback when backdrop-filter isn’t supported */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  /* slightly more opaque */
+}
+
+
+.glass-button {
+
+  background: rgba(255, 255, 255, 0.1);
+  /* your Fill: #FFFFFF, 10% */
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  /* Optional highlight direction like the Figma “light” */
+  background-image: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.05));
+
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px) saturate(180%);
+}
+
+
+
+.glass-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 70%);
+  pointer-events: none;
+}
+
+.item-content ul {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 10px;
+}
+
+.careers.item-content ul {
+  font-size: 18px;
+}
+
+@media(max-width:767px) {
+  .careers.item-content ul {
+    font-size: 14px;
+  }
+}
+
+.item-content ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-content ul li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #212C66;
+}
+
+.price strong {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.price2 strong {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+@media (max-width:767px) {
+  .flex-mobile {
+    flex: 0 0 150px;
+  }
+}
+
+.noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.cursor-outer,
+.cursor-inner {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+}
+
+
+.cursor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Inner cursor (small dot) */
+.cursor-inner {
+
+  border-radius: 50%;
+}
+
+* {
+  cursor: none !important;
+}
+
+.PhoneInputCountry {
+  width: 120px;
+  background: #F5F5F5;
+  padding: 16px;
+  border-radius: 100px;
+  position: relative;
+}
+
+.PhoneInputCountrySelectArrow {
+  display: none !important;
+}
+
+.PhoneInputCountry::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 16px;
+  background-image: url('/Images/Frame2.png');
+  background-repeat: no-repeat;
+}
+
+.PhoneInputInput {
+  background: #F5F5F5;
+  padding: 16px;
+  border-radius: 100px;
+  outline-color: #00CDFE;
+}
+
+.PhoneInputInput:focus {
+  border: 2px solid #00CDFE;
+}
+
+@media (max-width:767px) {
+  .singleCategory {
+    flex: 0 0 fit-content;
+  }
+}
+
+.blogsContent figcaption {
+  display: none;
+}
+
+.blogsContent figure {
+  pointer-events: none;
+  height: 540px;
+  overflow: hidden;
+  border-radius: 64px;
+}
+
+@media (max-width:767px) {
+  .blogsContent figure {
+    pointer-events: none;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 64px;
+  }
+}
+
+.blogsContent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 64px;
+}
+
+.blogsContent h2 {
+  color: #212C66;
+  font-size: 32px;
+  line-height: 150%;
+  letter-spacing: -0.64px;
+}
+
+.blogsContent h3 {
+  color: #212C66;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: -0.64px;
+}
+
+.blogsContent p {
+  color: #212C66;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.blogsContent p+figure {
+  margin-top: 20px;
+}
+
+
+@media (max-width:767px) {
+  .singlePoint0 {
+    right: 14% !important;
+    top: 13% !important;
+  }
+
+  .singlePoint1 {
+    top: 15% !important;
+  }
+}
+
+.blogsContent a {
+  text-decoration: underline;
+}
+
+.blogsContent ul,
+.blogsContent ol {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 10px;
+  color: #212C66;
+}
+
+.blogsContent ul li,
+.blogsContent ol li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #212C66;
+  position: relative;
+  padding-left: 20px;
+
+}
+
+.blogsContent ul li strong {
+  display: contents;
+}
+
+.blogsContent ul li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #212C66;
+  position: absolute;
+  left: 0;
+  top: 12px;
+}
+
+.blogsContent ol {
+  counter-reset: tidbit-counter;
+}
+
+.blogsContent ol li::before {
+  counter-increment: tidbit-counter;
+  content: counter(tidbit-counter) ".";
+  display: inline-block;
+  background: transparent;
+  position: absolute;
+  inset: 0;
+  top: 0px;
+}
+
+.faqsStyle ol,
+.faqsStyle ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+  color: #212C66;
+}
+
+.faqsStyle ul li,
+.faqsStyle ol li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #212C66;
+  position: relative;
+  padding-left: 20px;
+}
+
+.faqsStyle ul li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #212C66;
+  position: absolute;
+  left: 0;
+  top: 12px;
+}
+
+.faqsStyle ol {
+  counter-reset: tidbit-counter;
+}
+
+.faqsStyle ol li::before {
+  counter-increment: tidbit-counter;
+  content: counter(tidbit-counter) ".";
+  display: inline-block;
+  background: transparent;
+  position: absolute;
+  inset: 0;
+  top: 0px;
+}
